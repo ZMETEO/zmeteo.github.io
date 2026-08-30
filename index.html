@@ -19,7 +19,7 @@
             color: #fff;
         }
 
-        /* BOX PRINCIPALE */
+        /* BOX PRINCIPALE (PC) */
         .container {
             background: rgb(20, 20, 20);
             padding: 55px;
@@ -224,16 +224,16 @@
           background: #a00;
         }
 
-        /* ⭐ VERSIONE MOBILE — PREVISIONI VERTICALI */
+        /* ⭐ VERSIONE MOBILE — PREVISIONI VERTICALI + BOX RIDOTTO */
         @media (max-width: 480px) {
 
             .container {
-                margin-top: 40px;
-                padding: 35px;
+                margin-top: 40px;      /* 🔥 NON copre la scritta bianca */
+                padding: 35px;         /* 🔥 più piccolo su mobile */
             }
 
             .forecast-container {
-                flex-direction: column;   /* 🔥 verticale su mobile */
+                flex-direction: column;   /* 🔥 verticale */
                 overflow-x: hidden;
                 overflow-y: auto;
                 padding-left: 0;
