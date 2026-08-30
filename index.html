@@ -19,7 +19,7 @@
             color: #fff;
         }
 
-        /* ⭐ BOX PRINCIPALE — VERSIONE ORIGINALE */
+        /* ⭐ BOX PRINCIPALE – VERSIONE ORIGINALE */
         .container {
             background: rgb(20, 20, 20);
             padding: 55px;
@@ -104,7 +104,7 @@
             box-shadow: 0 0 10px #ff0000aa;
         }
 
-        /* ⭐ PREVISIONI — PC */
+        /* ⭐ PREVISIONI – PC */
         .forecast-container {
             margin-top: 30px;
             display: flex;
@@ -132,7 +132,35 @@
             margin: 10px auto;
         }
 
-        /* 📱 MOBILE — SOLO CASELLE */
+        /* 📱 MOBILE – FIX SOLO BOX (caselle NON toccate) */
+        @media (max-width: 480px) {
+
+            .container {
+                margin-top: 40px;      /* 🔥 NON copre più la scritta bianca */
+                padding: 35px;         /* 🔥 più compatto ma identico nello stile */
+                max-width: 360px;      /* 🔥 proporzionato per iPhone 11 */
+            }
+
+            .search-container {
+                width: 100%;           /* input più largo → lista visibile */
+            }
+
+            .search-box {
+                gap: 8px;
+            }
+
+            input {
+                font-size: 17px;
+                padding: 12px;
+            }
+
+            button {
+                font-size: 17px;
+                padding: 12px 18px;
+            }
+        }
+
+        /* 📱 MOBILE – CASELLE (già funzionano, NON tocco il box) */
         @media (max-width: 480px) {
 
             .forecast-container {
@@ -185,6 +213,8 @@
         </div>
         <button onclick="getWeather()">Cerca</button>
     </div>
+
+    <div id="errorBox" class="error">Città non trovata...</div>
 
     <div id="resultBox" class="result">
         <h3 id="cityName"></h3>
