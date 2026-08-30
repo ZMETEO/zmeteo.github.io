@@ -144,7 +144,6 @@
             color: #cccccc;
         }
 
-        /* ICONA METEO (Minecraft) */
         .weather-icon {
             width: 48px;
             height: 48px;
@@ -201,27 +200,41 @@
             box-shadow: 0 0 10px #ff0000aa;
             align-self: flex-end;
         }
-/* Scrollbar SMP Minimal Hardcore */
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;          /* nero profondo */
-  border-left: 2px solid #300;  /* bordo rosso scuro SMP */
-}
+        /* Scrollbar SMP Minimal Hardcore */
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
 
-::-webkit-scrollbar-thumb {
-  background: #700;             /* rosso scuro SMP */
-  border-radius: 3px;
-}
+        ::-webkit-scrollbar-track {
+          background: #0a0a0a;
+          border-left: 2px solid #300;
+        }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a00;             /* rosso SMP più acceso */
-}
+        ::-webkit-scrollbar-thumb {
+          background: #700;
+          border-radius: 3px;
+        }
 
+        ::-webkit-scrollbar-thumb:hover {
+          background: #a00;
+        }
+
+        /* ⭐ BLOCCO MOBILE AGGIUNTO */
+        @media (max-width: 480px) {
+            .container {
+                margin-top: 120px !important;
+                padding: 55px !important;
+                max-width: 420px !important;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+        }
 
     </style>
+    
 </head>
 
 <body>
@@ -240,14 +253,12 @@
 
     <div id="errorBox" class="error">Città non trovata...</div>
 
-    <!-- BOX PRINCIPALE SENZA ICONA -->
     <div id="resultBox" class="result">
         <h3 id="cityName"></h3>
         <div class="temp" id="cityTemp"></div>
         <div class="desc" id="cityDesc"></div>
     </div>
 
-    <!-- PREVISIONI (icone aggiunte dal JS) -->
     <div id="forecastBox" class="forecast-container"></div>
 
     <button id="backBtn" onclick="goBack()">Torna alla ricerca</button>
