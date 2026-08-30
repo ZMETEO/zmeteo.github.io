@@ -174,25 +174,32 @@
         }
 
         .forecast-day {
-            min-width: 180px;
-            background: #111;
-            border: 3px solid #ff0000;
-            border-radius: 10px;
-            text-align: center;
-            padding: 14px;
-            box-shadow: 0 0 10px #ff0000aa;
-            flex-shrink: 0;
-        }
+    min-width: 150px;        /* più piccole */
+    background: #111;
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px 10px;       /* meno alte */
+    box-shadow: 0 0 10px #ff0000aa;
+    flex-shrink: 0;
+}
 
-        .forecast-day h4 {
-            font-size: 16px;
-            color: #ff4444;
-        }
+.forecast-day h4 {
+    font-size: 14px;         /* più piccolo */
+    margin-bottom: 6px;
+}
 
-        .forecast-day p {
-            font-size: 14px;
-            color: #cccccc;
-        }
+.forecast-day p {
+    font-size: 12px;         /* più compatto */
+    margin: 2px 0;
+}
+
+.weather-icon {
+    width: 32px;             /* icona più piccola */
+    height: 32px;
+    margin: 6px auto;
+}
+
 
         #backBtn {
             display: none;
