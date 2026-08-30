@@ -249,7 +249,28 @@
         font-size: 16px !important;
     }
 }
+.social-bar {
+    width: 100%;
+    margin-top: 250px;          /* 🔥 spinge la barra verso il basso */
+    margin-bottom: 40px;       /* 🔥 crea spazio dal fondo */
+    display: flex;
+    justify-content: center;   /* 🔥 centrate orizzontalmente */
+    gap: 20px;
+}
 
+.social-bar img {
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 6px #ff0000aa);
+    transition: transform 0.2s, filter 0.2s;
+    cursor: pointer;
+}
+
+.social-bar img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px #ff0000);
+}
     </style>
     
 </head>
@@ -280,6 +301,23 @@
 
     <button id="backBtn" onclick="goBack()">Torna alla ricerca</button>
 
+</div>
+<div class="social-bar">
+    <a href="https://www.instagram.com/zkraftmc" target="_blank">
+        <img src="icons/instagram.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.tiktok.com/@zkraftmc" target="_blank">
+        <img src="icons/tiktok.png" alt="TikTok">
+    </a>
+
+    <a href="https://www.youtube.com/@zkraftmc" target="_blank">
+        <img src="icons/youtube.png" alt="YouTube">
+    </a>
+
+    <a href="https://discord.gg/TYaZ3eM5Q" target="_blank">
+        <img src="icons/discord.png" alt="Discord">
+    </a>
 </div>
 
 <script src="app.js"></script>
