@@ -14,10 +14,10 @@ function translateWeatherCode(code) {
 // ICONA METEO
 function getWeatherIcon(code) {
   if (code === 0)
-    return "icons/sole.png";
+    return "icons/sole.png"; // sereno
 
   if (code >= 1 && code <= 3)
-    return "icons/parzialmente nuvoloso.png";
+    return "icons/parzialmente nuvoloso.png"; // parzialmente nuvoloso
 
   if (
     (code >= 51 && code <= 55) ||
@@ -26,12 +26,8 @@ function getWeatherIcon(code) {
   )
     return "icons/pioggia.png";
 
-  if (code >= 95 && code <= 99)
-    return "icons/temporale.png"; // temporale
-
   return "icons/nuvoloso.png";
 }
-
 
 // CERCA → usa geocoding
 async function searchCity() {
