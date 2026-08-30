@@ -29,7 +29,7 @@
             max-width: 420px;
             width: 90%;
             margin: 0 auto;
-            margin-top: 100px;   /* come richiesto */
+            margin-top: 100px;
             position: relative;
             z-index: 10;
             display: flex;
@@ -159,7 +159,7 @@
             font-size: 16px;
         }
 
-        /* PREVISIONI ORIZZONTALI */
+        /* PREVISIONI ORIZZONTALI (PC) */
         .forecast-container {
             margin-top: 30px;
             display: flex;
@@ -224,28 +224,32 @@
           background: #a00;
         }
 
-        /* ⭐ FIX MOBILE PER iPHONE 11 E TELEFONI */
+        /* ⭐ VERSIONE MOBILE — PREVISIONI VERTICALI */
         @media (max-width: 480px) {
 
+            .container {
+                margin-top: 40px;
+                padding: 35px;
+            }
+
             .forecast-container {
-                padding-left: 20px;   /* evita taglio prima card */
-                padding-right: 10px;
-                gap: 16px;
+                flex-direction: column;   /* 🔥 verticale su mobile */
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding-left: 0;
+                padding-right: 0;
+                gap: 15px;
             }
 
             .forecast-day {
-                min-width: 180px;     /* più adatte allo schermo */
+                min-width: 100%;
+                width: 100%;
                 padding: 16px;
             }
 
             .weather-icon {
                 width: 38px;
                 height: 38px;
-            }
-
-            .container {
-                margin-top: 60px;     /* più alto su mobile */
-                padding: 40px;
             }
 
             .search-container {
