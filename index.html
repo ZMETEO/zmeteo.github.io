@@ -19,7 +19,7 @@
             color: #fff;
         }
 
-        /* BOX PRINCIPALE – IDENTICO ALLA VERSIONE CHE TI PIACE */
+        /* BOX PRINCIPALE – BASE (PC) */
         .container {
             background: rgb(20, 20, 20);
             padding: 55px;
@@ -72,35 +72,6 @@
             border-color: #ff4444;
         }
 
-        .suggestions-list {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: #1a1a1a;
-            border: 3px solid #ff0000;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #ff0000aa;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-            margin-top: 5px;
-            padding: 0;
-            list-style: none;
-            display: none;
-        }
-
-        .suggestions-list li {
-            padding: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            color: #fff;
-        }
-
-        .suggestions-list li:hover {
-            background: #330000;
-        }
-
         button {
             padding: 14px 22px;
             background: #b00000;
@@ -109,12 +80,7 @@
             border-radius: 6px;
             font-size: 18px;
             cursor: pointer;
-            transition: 0.2s;
             box-shadow: 0 0 10px #ff0000aa;
-        }
-
-        button:hover {
-            background: #ff0000;
         }
 
         .result {
@@ -159,7 +125,7 @@
             font-size: 16px;
         }
 
-        /* PREVISIONI – PC: ORIZZONTALI */
+        /* PREVISIONI – PC (caselle già ok) */
         .forecast-container {
             margin-top: 30px;
             display: flex;
@@ -191,20 +157,6 @@
             margin: 4px 0;
         }
 
-        #backBtn {
-            display: none;
-            margin-top: 25px;
-            padding: 14px 22px;
-            background: #660000;
-            border: 3px solid #ff0000;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 0 10px #ff0000aa;
-            align-self: flex-end;
-        }
-
         ::-webkit-scrollbar {
           width: 10px;
         }
@@ -223,40 +175,39 @@
           background: #a00;
         }
 
-        /* 📱 SOLO MOBILE: SISTEMO LE CASELLE, NON TOCCO IL BOX */
+        /* 📱 MOBILE – SISTEMA SOLO IL BOX PRINCIPALE */
         @media (max-width: 480px) {
 
-            .forecast-container {
-                flex-direction: column;      /* verticale */
-                overflow-x: hidden;
-                overflow-y: auto;
-                gap: 10px;
-                padding: 0;
-                width: 100%;
+            .container {
+                margin-top: 60px;          /* un po’ più alto, più vicino all’immagine */
+                padding: 40px;             /* leggermente più compatto ma ancora “importante” */
+                max-width: 380px;          /* più proporzionato allo schermo */
             }
 
-            .forecast-day {
-                width: 100%;
-                min-width: 100%;
-                box-sizing: border-box;      /* include bordo e padding */
+            .logo {
+                width: 140px;              /* leggermente più piccolo per stare meglio nel box */
+                margin-bottom: 20px;
+            }
+
+            .search-box {
+                flex-direction: column;    /* input sopra, bottone sotto su mobile */
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .search-container {
+                width: 100%;               /* input full width nel box */
+            }
+
+            input {
+                font-size: 17px;
                 padding: 12px;
-                border-radius: 10px;
             }
 
-            .forecast-day h4 {
-                font-size: 14px;
-                margin-bottom: 4px;
-            }
-
-            .forecast-day p {
-                font-size: 12px;
-                margin: 2px 0;
-            }
-
-            .weather-icon {
-                width: 28px;
-                height: 28px;
-                margin: 4px auto;
+            button {
+                width: 100%;               /* bottone largo come l’input, centrato */
+                font-size: 17px;
+                padding: 12px;
             }
         }
 
@@ -272,7 +223,6 @@
     <div class="search-box">
         <div class="search-container">
             <input type="text" id="cityInput" placeholder="Inserisci una città..." autocomplete="off">
-            <ul id="suggestions" class="suggestions-list"></ul>
         </div>
         <button onclick="getWeather()">Cerca</button>
     </div>
@@ -286,8 +236,6 @@
     </div>
 
     <div id="forecastBox" class="forecast-container"></div>
-
-    <button id="backBtn" onclick="goBack()">Torna alla ricerca</button>
 
 </div>
 
