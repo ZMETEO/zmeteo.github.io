@@ -19,7 +19,7 @@
             color: #fff;
         }
 
-        /* BOX PRINCIPALE – BASE (PC) */
+        /* ⭐ BOX PRINCIPALE — VERSIONE ORIGINALE */
         .container {
             background: rgb(20, 20, 20);
             padding: 55px;
@@ -68,8 +68,29 @@
             color: #fff;
         }
 
-        input:focus {
-            border-color: #ff4444;
+        .suggestions-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #1a1a1a;
+            border: 3px solid #ff0000;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #ff0000aa;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            margin-top: 5px;
+            padding: 0;
+            list-style: none;
+            display: none;
+        }
+
+        .suggestions-list li {
+            padding: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
         }
 
         button {
@@ -83,49 +104,7 @@
             box-shadow: 0 0 10px #ff0000aa;
         }
 
-        .result {
-            margin-top: 30px;
-            display: none;
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 10px;
-            border: 3px solid #ff0000;
-            box-shadow: 0 0 10px #ff0000aa;
-            text-align: center;
-        }
-
-        #cityName {
-            font-size: 26px;
-            color: #ff4444;
-        }
-
-        .temp {
-            font-size: 48px;
-            color: #ff0000;
-            text-shadow: 2px 2px #660000;
-        }
-
-        .desc {
-            font-size: 18px;
-            color: #cccccc;
-        }
-
-        .weather-icon {
-            width: 42px;
-            height: 42px;
-            image-rendering: pixelated;
-            margin: 10px auto;
-            display: block;
-        }
-
-        .error {
-            color: #ff4444;
-            margin-top: 15px;
-            display: none;
-            font-size: 16px;
-        }
-
-        /* PREVISIONI – PC (caselle già ok) */
+        /* ⭐ PREVISIONI — PC */
         .forecast-container {
             margin-top: 30px;
             display: flex;
@@ -147,67 +126,46 @@
             flex-shrink: 0;
         }
 
-        .forecast-day h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
+        .weather-icon {
+            width: 42px;
+            height: 42px;
+            margin: 10px auto;
         }
 
-        .forecast-day p {
-            font-size: 15px;
-            margin: 4px 0;
-        }
-
-        ::-webkit-scrollbar {
-          width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: #0a0a0a;
-          border-left: 2px solid #300;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: #700;
-          border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: #a00;
-        }
-
-        /* 📱 MOBILE – SISTEMA SOLO IL BOX PRINCIPALE */
+        /* 📱 MOBILE — SOLO CASELLE */
         @media (max-width: 480px) {
 
-            .container {
-                margin-top: 60px;          /* un po’ più alto, più vicino all’immagine */
-                padding: 40px;             /* leggermente più compatto ma ancora “importante” */
-                max-width: 380px;          /* più proporzionato allo schermo */
+            .forecast-container {
+                flex-direction: column;
+                overflow-x: hidden;
+                overflow-y: auto;
+                gap: 10px;
+                padding: 0;
+                width: 100%;
             }
 
-            .logo {
-                width: 140px;              /* leggermente più piccolo per stare meglio nel box */
-                margin-bottom: 20px;
-            }
-
-            .search-box {
-                flex-direction: column;    /* input sopra, bottone sotto su mobile */
-                align-items: stretch;
-                gap: 12px;
-            }
-
-            .search-container {
-                width: 100%;               /* input full width nel box */
-            }
-
-            input {
-                font-size: 17px;
+            .forecast-day {
+                width: 100%;
+                min-width: 100%;
                 padding: 12px;
+                border-radius: 10px;
+                box-sizing: border-box;
             }
 
-            button {
-                width: 100%;               /* bottone largo come l’input, centrato */
-                font-size: 17px;
-                padding: 12px;
+            .forecast-day h4 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .forecast-day p {
+                font-size: 13px;
+                margin: 2px 0;
+            }
+
+            .weather-icon {
+                width: 30px;
+                height: 30px;
+                margin: 6px auto;
             }
         }
 
@@ -218,16 +176,15 @@
 
 <div class="container">
 
-    <img src="logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+    <img src="logo.png" alt="Logo" class="logo">
 
     <div class="search-box">
         <div class="search-container">
             <input type="text" id="cityInput" placeholder="Inserisci una città..." autocomplete="off">
+            <ul id="suggestions" class="suggestions-list"></ul>
         </div>
         <button onclick="getWeather()">Cerca</button>
     </div>
-
-    <div id="errorBox" class="error">Città non trovata...</div>
 
     <div id="resultBox" class="result">
         <h3 id="cityName"></h3>
