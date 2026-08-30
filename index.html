@@ -224,63 +224,64 @@
           background: #a00;
         }
 
-        /* ⭐ VERSIONE MOBILE DEFINITIVA */
-        @media (max-width: 480px) {
+/* ⭐ VERSIONE MOBILE ULTRA-COMPATTA (iPhone 11 FIX) */
+@media (max-width: 480px) {
 
-            /* Box più piccolo */
-            .container {
-                margin-top: 20px;
-                padding: 20px;
-                max-width: 330px;
-            }
+    /* BOX PRINCIPALE */
+    .container {
+        margin-top: 15px;      /* 🔥 NON copre la scritta bianca */
+        padding: 18px;         /* 🔥 molto più compatto */
+        max-width: 320px;      /* 🔥 più stretto */
+    }
 
-            /* Previsioni verticali e compatte */
-            .forecast-container {
-                flex-direction: column;
-                overflow-x: hidden;
-                overflow-y: auto;
-                gap: 8px;
-                padding: 0;
-            }
+    /* PREVISIONI VERTICALI E SUPER COMPATTE */
+    .forecast-container {
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        gap: 6px;
+        padding: 0;            /* 🔥 niente padding laterale */
+        width: 100%;
+    }
 
-            .forecast-day {
-                min-width: 100%;
-                width: 100%;
-                padding: 10px;
-                border-radius: 8px;
-            }
+    .forecast-day {
+        width: 100%;           /* 🔥 nessun taglio */
+        padding: 8px;          /* 🔥 molto più piccole */
+        border-radius: 6px;
+    }
 
-            .forecast-day h4 {
-                font-size: 14px;
-                margin-bottom: 4px;
-            }
+    .forecast-day h4 {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
 
-            .forecast-day p {
-                font-size: 12px;
-                margin: 2px 0;
-            }
+    .forecast-day p {
+        font-size: 11px;
+        margin: 2px 0;
+    }
 
-            .weather-icon {
-                width: 26px;
-                height: 26px;
-                margin: 4px auto;
-            }
+    .weather-icon {
+        width: 22px;           /* 🔥 icona più piccola */
+        height: 22px;
+        margin: 4px auto;
+    }
 
-            /* Input e bottone più piccoli */
-            .search-container {
-                width: 100%;
-            }
+    /* INPUT E BOTTONE */
+    .search-container {
+        width: 100%;
+    }
 
-            input {
-                font-size: 15px;
-                padding: 10px;
-            }
+    input {
+        font-size: 15px;
+        padding: 10px;
+    }
 
-            button {
-                font-size: 15px;
-                padding: 10px 14px;
-            }
-        }
+    button {
+        font-size: 15px;
+        padding: 10px 14px;
+    }
+}
+
 
     </style>
 </head>
