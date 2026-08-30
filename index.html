@@ -25,8 +25,11 @@
             border-radius: 12px;
             border: 4px solid #b00000;
             box-shadow: 0 0 25px #ff0000aa, 0 0 10px #660000;
-            max-width: 420px;
-            width: 90%;
+
+            /* 🔥 NUOVA DIMENSIONE */
+            max-width: 750px;
+            width: 95%;
+
             margin: 0 auto;
             margin-top: 150px;
             position: relative;
@@ -144,7 +147,6 @@
             color: #cccccc;
         }
 
-        /* ICONA METEO (Minecraft) */
         .weather-icon {
             width: 48px;
             height: 48px;
@@ -160,28 +162,27 @@
             font-size: 16px;
         }
 
-/* PREVISIONI ORIZZONTALI */
-.forecast-container {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;      /* ORIZZONTALE */
-    gap: 20px;
-    overflow-x: auto;         /* SCORRIMENTO LATERALE */
-    padding: 10px;
-    justify-content: flex-start;
-}
+        /* PREVISIONI ORIZZONTALI */
+        .forecast-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px;
+            justify-content: flex-start;
+        }
 
-.forecast-day {
-    min-width: 180px;         /* LARGHEZZA MINIMA */
-    background: #111;
-    border: 3px solid #ff0000;
-    border-radius: 10px;
-    text-align: center;
-    padding: 14px;
-    box-shadow: 0 0 10px #ff0000aa;
-    flex-shrink: 0;           /* NON SI STRINGE */
-}
-
+        .forecast-day {
+            min-width: 180px;
+            background: #111;
+            border: 3px solid #ff0000;
+            border-radius: 10px;
+            text-align: center;
+            padding: 14px;
+            box-shadow: 0 0 10px #ff0000aa;
+            flex-shrink: 0;
+        }
 
         .forecast-day h4 {
             font-size: 16px;
@@ -206,25 +207,24 @@
             box-shadow: 0 0 10px #ff0000aa;
             align-self: flex-end;
         }
-/* Scrollbar SMP Minimal Hardcore */
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;          /* nero profondo */
-  border-left: 2px solid #300;  /* bordo rosso scuro SMP */
-}
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
 
-::-webkit-scrollbar-thumb {
-  background: #700;             /* rosso scuro SMP */
-  border-radius: 3px;
-}
+        ::-webkit-scrollbar-track {
+          background: #0a0a0a;
+          border-left: 2px solid #300;
+        }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #a00;             /* rosso SMP più acceso */
-}
+        ::-webkit-scrollbar-thumb {
+          background: #700;
+          border-radius: 3px;
+        }
 
+        ::-webkit-scrollbar-thumb:hover {
+          background: #a00;
+        }
 
     </style>
 </head>
@@ -245,14 +245,12 @@
 
     <div id="errorBox" class="error">Città non trovata...</div>
 
-    <!-- BOX PRINCIPALE SENZA ICONA -->
     <div id="resultBox" class="result">
         <h3 id="cityName"></h3>
         <div class="temp" id="cityTemp"></div>
         <div class="desc" id="cityDesc"></div>
     </div>
 
-    <!-- PREVISIONI (icone aggiunte dal JS) -->
     <div id="forecastBox" class="forecast-container"></div>
 
     <button id="backBtn" onclick="goBack()">Torna alla ricerca</button>
