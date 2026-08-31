@@ -270,8 +270,15 @@
 }
 
 .social-bar img:hover {
-    transform: scale(1.15);
+    transform: scale(1.55);
     filter: drop-shadow(0 0 10px #ff0000);
+    image-rendering: pixelated; /* 🔥 mantiene la nitidezza durante lo zoom */
+}
+.social-bar img[alt="Store"] {
+    scale: 1.50;
+    image-rendering: pixelated;
+    transition: transform 0.2s, filter 0.2s;
+}
 }
     </style>
     
