@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<!-- © 2024 ZMETEO — Codice originale creato da ymom -->
 <html lang="it">
-    <!-- ⭐ Open Graph per anteprima link -->
-<meta property="og:title" content="ZMETEO — Meteo Ufficiale zKraft">
-<meta property="og:description" content="Il meteo del tuo mondo, potenziato da zKraft.">
-<meta property="og:image" content="https://zmeteo.github.io/preview.png">
-<meta property="og:url" content="https://zmeteo.github.io/">
-<meta property="og:type" content="website">
-
 <head>
+    <!-- ⭐ Open Graph -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="ZMETEO — Meteo Ufficiale zKraft">
+    <meta property="og:description" content="Il meteo del tuo mondo, potenziato da zKraft.">
+    <meta property="og:image" content="https://zmeteo.github.io/preview.png">
+    <meta property="og:url" content="https://zmeteo.github.io/">
+    <meta property="og:type" content="website">
+
     <title>ZMETEO</title>
     <link rel="icon" type="image/png" href="logo.png">
 
     <style>
-        /* © 2024 ZMETEO — Design originale SMP Hardcore */
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap');
 
         body {
@@ -40,7 +38,6 @@
             margin-top: 150px;
             position: relative;
             z-index: 10;
-
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -53,61 +50,50 @@
             filter: drop-shadow(0px 0px 6px #ff0000);
         }
 
-        /* ⭐ ENDERMAN — ANIMAZIONE COMPLETA MIGLIORATA */
+        /* ⭐ ENDERMAN — ANIMAZIONE COMPLETA */
         .enderman-walk {
-    position: absolute;
-    top: -95px;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    overflow: hidden;
-    pointer-events: none;
+            position: absolute;
+            top: -95px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            overflow: hidden;
+            pointer-events: none;
 
-    /* ⭐ taglio invisibile sinistra + destra */
-    mask-image: linear-gradient(to right,
-        transparent 0%,     /* 🔥 taglia sinistra */
-        black 10%,          /* 🔥 area visibile */
-        black 90%,          /* 🔥 area visibile */
-        transparent 100%    /* 🔥 taglia destra */
-    );
+            mask-image: linear-gradient(to right,
+                transparent 0%,
+                black 10%,
+                black 90%,
+                transparent 100%
+            );
 
-    -webkit-mask-image: linear-gradient(to right,
-        transparent 0%,
-        black 10%,
-        black 90%,
-        transparent 100%
-    );
-}
-
+            -webkit-mask-image: linear-gradient(to right,
+                transparent 0%,
+                black 10%,
+                black 90%,
+                transparent 100%
+            );
+        }
 
         .enderman-walk img {
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: -80px;
             width: 70px;
             image-rendering: pixelated;
 
+            filter: drop-shadow(0 0 6px #a020f0);
+
             animation: endermanWalk 6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite,
-                       endermanBob 0.6s ease-in-out infinite;
+                       endermanBob 0.6s ease-in-out infinite,
+                       endermanGlow 1.4s ease-in-out infinite;
         }
-        /* ⭐ Glow viola attorno all'Enderman */
-.enderman-walk img {
-    filter: drop-shadow(0 0 6px #a020f0) drop-shadow(0 0 12px #a020f0);
-    animation: endermanWalk 6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite,
-               endermanBob 0.6s ease-in-out infinite,
-               endermanGlow 1.4s ease-in-out infinite;
-}
-.enderman-walk img {
-    bottom: -5px; /* 🔥 lo abbassa leggermente per centrarlo */
-}
 
-/* 🔥 Glow pulsante */
-@keyframes endermanGlow {
-    0%   { filter: drop-shadow(0 0 4px #a020f0) drop-shadow(0 0 10px #a020f0); }
-    50%  { filter: drop-shadow(0 0 10px #c040ff) drop-shadow(0 0 18px #c040ff); }
-    100% { filter: drop-shadow(0 0 4px #a020f0) drop-shadow(0 0 10px #a020f0); }
-}
-
+        @keyframes endermanGlow {
+            0%   { filter: drop-shadow(0 0 4px #a020f0); }
+            50%  { filter: drop-shadow(0 0 10px #c040ff); }
+            100% { filter: drop-shadow(0 0 4px #a020f0); }
+        }
 
         @keyframes endermanWalk {
             0%   { left: -80px; transform: scaleX(1); }
@@ -134,7 +120,6 @@
             left: 50%;
             top: 40%;
             opacity: 0.7;
-
             animation: particles 1.2s infinite;
         }
 
@@ -320,67 +305,66 @@
           background: #a00;
         }
 
-        /* ⭐ BLOCCO MOBILE AGGIUNTO */
-@media (max-width: 480px) {
-    .container {
-        margin-top: 90px !important;
-        padding: 35px !important;
-        max-width: 340px !important;
-        border-width: 3px !important;
-        box-shadow: 0 0 18px #ff0000aa;
-    }
+        /* ⭐ BLOCCO MOBILE */
+        @media (max-width: 480px) {
+            .container {
+                margin-top: 90px !important;
+                padding: 35px !important;
+                max-width: 340px !important;
+                border-width: 3px !important;
+                box-shadow: 0 0 18px #ff0000aa;
+            }
 
-    .logo {
-        width: 130px !important;
-        margin-bottom: 18px !important;
-    }
+            .logo {
+                width: 130px !important;
+                margin-bottom: 18px !important;
+            }
 
-    .search-container {
-        width: 100% !important;
-    }
+            .search-container {
+                width: 100% !important;
+            }
 
-    input {
-        padding: 12px !important;
-        font-size: 16px !important;
-    }
+            input {
+                padding: 12px !important;
+                font-size: 16px !important;
+            }
 
-    button {
-        padding: 12px 18px !important;
-        font-size: 16px !important;
-    }
-}
+            button {
+                padding: 12px 18px !important;
+                font-size: 16px !important;
+            }
+        }
 
-.social-bar {
-    width: 100%;
-    margin-top: 250px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
+        .social-bar {
+            width: 100%;
+            margin-top: 250px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-.social-bar img {
-    width: 32px;
-    height: 32px;
-    image-rendering: pixelated;
-    filter: drop-shadow(0 0 6px #ff0000aa);
-    transition: transform 0.2s, filter 0.2s;
-    cursor: pointer;
-}
+        .social-bar img {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 6px #ff0000aa);
+            transition: transform 0.2s, filter 0.2s;
+            cursor: pointer;
+        }
 
-.social-bar img:hover {
-    transform: scale(1.55);
-    filter: drop-shadow(0 0 10px #ff0000);
-    image-rendering: pixelated;
-}
+        .social-bar img:hover {
+            transform: scale(1.55);
+            filter: drop-shadow(0 0 10px #ff0000);
+            image-rendering: pixelated;
+        }
 
-.social-bar img[alt="Store"] {
-    scale: 1.50;
-    image-rendering: pixelated;
-}
+        .social-bar img[alt="Store"] {
+            scale: 1.50;
+            image-rendering: pixelated;
+        }
 
     </style>
-    
 </head>
 
 <body>
@@ -404,11 +388,12 @@
 
     <div id="errorBox" class="error">Città non trovata...</div>
 
-    <div id="resultBox" class="result">
-        <h3 id="cityName"></h3>
-        <div class="temp" id="cityTemp"></div>
-        <div class="desc" id="cityDesc"></div>
-    </div>
+<div id="resultBox" class="result">
+    <h3 id="cityName"></h3>
+    <img id="cityIcon" class="weather-icon" src="" alt="">
+    <div class="temp" id="cityTemp"></div>
+    <div class="desc" id="cityDesc"></div>
+</div>
 
     <div id="forecastBox" class="forecast-container"></div>
 
@@ -437,6 +422,7 @@
         <img src="icons/store.png" alt="Store">
     </a>
 </div>
+<audio id="uiSound" src="audio/minecraft_click.mp3"></audio>
 
 <p style="text-align:center; margin-top:0px; color:#aaa; font-size:12px;">
     © 2024 ZMETEO — Tutti i diritti riservati.<br>

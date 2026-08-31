@@ -1,3 +1,57 @@
+// ⭐ MESSAGGI CASUALI ERRORE (fuori da tutte le funzioni)
+const errorMessages = [
+  "Ora verrai bannato.",
+  "Errore fatale… forse.",
+  "Qualcosa è andato storto, ma non dirlo a nessuno.",
+  "Il server sta fumando, riprova.",
+  "Enderman ha rubato il meteo.",
+  "Non funziona… colpa tua.",
+  "Errore 404: pazienza non trovata.",
+  "Il meteo è andato in vacanza.",
+  "Il Sole si rifiuta di collaborare.",
+  "La pioggia ha scioperato.",
+  "Il server ha preso una pausa caffè.",
+  "Il meteo è stato avvistato ma è scappato.",
+  "Il vento ha spazzato via la risposta.",
+  "Il temporale ha mangiato i dati.",
+  "Il clima oggi non vuole parlare.",
+  "Il meteo è timido, riprova.",
+  "Il cielo ha detto: 'non oggi'.",
+  "Il meteo è in modalità aereo.",
+  "Errore: troppa bellezza nella tua città.",
+  "Il meteo è stato rapito dai Creeper.",
+  "Il database ha preso freddo.",
+  "Il meteo è caduto nel Nether.",
+  "Il server ha trovato un diamante e si è distratto.",
+  "Il meteo è stato craftato male.",
+  "Il villager dice: 'Hrrrm… no'.",
+  "Il meteo è stato colpito da un fulmine.",
+  "Il meteo è scappato con un Ender Pearl.",
+  "Il server ha sbagliato crafting.",
+  "Il meteo è finito in un buco 1x1.",
+  "Il meteo è stato mangiato da un Warden.",
+  "Il meteo è stato bannato dal server.",
+  "Il meteo ha perso la connessione.",
+  "Il meteo ha trovato un bug e ci è caduto dentro.",
+  "Il meteo è stato messo in prigione dai Pillager.",
+  "Il meteo è stato rubato da un Allay.",
+  "Il meteo è stato messo AFK.",
+  "Il meteo è stato disconnesso per inattività.",
+  "Il meteo è stato ucciso da un cactus.",
+  "Il meteo è esploso con un Creeper.",
+  "Il meteo è stato colpito da un tridente.",
+  "Il meteo è stato risucchiato nel Void.",
+  "Il meteo ha perso tutti gli item.",
+  "Il meteo è stato respawnato senza dati.",
+  "Il meteo ha dimenticato la password.",
+  "Il meteo è stato messo in modalità hardcore.",
+  "Il meteo ha fatto rage‑quit.",
+  "Il meteo ha trovato un bug e l’ha adottato.",
+  "Il meteo è stato sconfitto da un pollo.",
+  "Il meteo ha detto: 'non mi pagano abbastanza'."
+];
+
+
 // Traduzione codici meteo
 function translateWeatherCode(code) {
   if (code === 0) return 'Cielo Sereno';
@@ -14,10 +68,10 @@ function translateWeatherCode(code) {
 // ICONA METEO
 function getWeatherIcon(code) {
   if (code === 0)
-    return "icons/sole.png"; // sereno
+    return "icons/sole.png";
 
   if (code >= 1 && code <= 3)
-    return "icons/parzialmente nuvoloso.png"; // parzialmente nuvoloso
+    return "icons/parzialmente nuvoloso.png";
 
   if (
     (code >= 51 && code <= 55) ||
@@ -53,6 +107,10 @@ async function searchCity() {
 
 // Funzione principale
 async function getWeather(lat, lon, displayName) {
+
+  // ⭐ SUONO CLICK
+  document.getElementById("uiSound").play();
+
   const resultBox = document.getElementById('resultBox');
   const errorBox = document.getElementById('errorBox');
 
@@ -67,6 +125,7 @@ async function getWeather(lat, lon, displayName) {
     document.getElementById('cityName').innerText = displayName;
     document.getElementById('cityTemp').innerText = `${Math.round(current.temperature)}°C`;
     document.getElementById('cityDesc').innerText = translateWeatherCode(current.weathercode);
+    document.getElementById('cityIcon').src = getWeatherIcon(current.weathercode);
 
     resultBox.style.display = 'block';
     errorBox.style.display = 'none';
@@ -105,7 +164,10 @@ async function getWeather(lat, lon, displayName) {
 
   } catch (error) {
     console.error('Errore nel caricamento:', error);
-    errorBox.innerText = "Errore nel caricamento meteo.";
+
+    // ⭐ MESSAGGIO CASUALE
+    errorBox.innerText = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+
     errorBox.style.display = 'block';
     resultBox.style.display = 'none';
   }
@@ -113,6 +175,10 @@ async function getWeather(lat, lon, displayName) {
 
 // TORNA ALLA RICERCA
 function goBack() {
+
+  // ⭐ SUONO CLICK
+  document.getElementById("uiSound").play();
+
   document.getElementById("resultBox").style.display = "none";
   document.getElementById("forecastBox").innerHTML = "";
   document.getElementById("errorBox").style.display = "none";
@@ -167,7 +233,6 @@ document.getElementById('cityInput').addEventListener('input', async function ()
 
     suggestionsList.style.display = 'block';
 
-    // ⭐ FIX: quando la lista appare, seleziona SUBITO il primo
     suggestionIndex = 0;
     const items = suggestionsList.getElementsByTagName('li');
     if (items.length > 0) {
@@ -187,25 +252,21 @@ document.getElementById('cityInput').addEventListener('keydown', function (event
 
   if (suggestions.style.display !== 'block' || items.length === 0) return;
 
-  // Freccia GIÙ
   if (event.key === 'ArrowDown') {
     event.preventDefault();
     suggestionIndex = (suggestionIndex + 1) % items.length;
   }
 
-  // Freccia SU
   if (event.key === 'ArrowUp') {
     event.preventDefault();
     suggestionIndex = (suggestionIndex - 1 + items.length) % items.length;
   }
 
-  // Evidenzia elemento selezionato
   for (let i = 0; i < items.length; i++) {
     items[i].style.background = (i === suggestionIndex) ? '#333' : '';
     items[i].style.color = (i === suggestionIndex) ? '#fff' : '';
   }
 
-  // Invio → seleziona città evidenziata
   if (event.key === 'Enter' && suggestionIndex >= 0) {
     event.preventDefault();
     items[suggestionIndex].click();
