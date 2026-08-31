@@ -46,33 +46,95 @@
             filter: drop-shadow(0px 0px 6px #ff0000);
         }
 
-        /* ⭐ ENDERMAN CHE CAMMINA SOPRA IL BOX */
+        /* ⭐ ENDERMAN — ANIMAZIONE COMPLETA MIGLIORATA */
         .enderman-walk {
     position: absolute;
-    top: -60px;        /* 🔥 lo sposta sopra il box */
+    top: -95px;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 120px;
     overflow: hidden;
-    pointer-events: none; /* 🔥 non cliccabile */
+    pointer-events: none;
+
+    /* ⭐ taglio invisibile sinistra + destra */
+    mask-image: linear-gradient(to right,
+        transparent 0%,     /* 🔥 taglia sinistra */
+        black 10%,          /* 🔥 area visibile */
+        black 90%,          /* 🔥 area visibile */
+        transparent 100%    /* 🔥 taglia destra */
+    );
+
+    -webkit-mask-image: linear-gradient(to right,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
 }
 
 
         .enderman-walk img {
             position: absolute;
             bottom: 0;
-            left: -80px; /* parte fuori a sinistra */
+            left: -80px;
             width: 70px;
             image-rendering: pixelated;
-            animation: endermanWalk 6s linear infinite;
+
+            animation: endermanWalk 6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite,
+                       endermanBob 0.6s ease-in-out infinite;
         }
+        /* ⭐ Glow viola attorno all'Enderman */
+.enderman-walk img {
+    filter: drop-shadow(0 0 6px #a020f0) drop-shadow(0 0 12px #a020f0);
+    animation: endermanWalk 6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite,
+               endermanBob 0.6s ease-in-out infinite,
+               endermanGlow 1.4s ease-in-out infinite;
+}
+.enderman-walk img {
+    bottom: -5px; /* 🔥 lo abbassa leggermente per centrarlo */
+}
+
+/* 🔥 Glow pulsante */
+@keyframes endermanGlow {
+    0%   { filter: drop-shadow(0 0 4px #a020f0) drop-shadow(0 0 10px #a020f0); }
+    50%  { filter: drop-shadow(0 0 10px #c040ff) drop-shadow(0 0 18px #c040ff); }
+    100% { filter: drop-shadow(0 0 4px #a020f0) drop-shadow(0 0 10px #a020f0); }
+}
+
 
         @keyframes endermanWalk {
             0%   { left: -80px; transform: scaleX(1); }
-            45%  { left: calc(100% - 40px); transform: scaleX(1); }
+            40%  { left: calc(100% - 40px); transform: scaleX(1); }
             50%  { left: calc(100% - 40px); transform: scaleX(-1); }
-            95%  { left: -80px; transform: scaleX(-1); }
+            90%  { left: -80px; transform: scaleX(-1); }
             100% { left: -80px; transform: scaleX(1); }
+        }
+
+        @keyframes endermanBob {
+            0% { bottom: 0; }
+            50% { bottom: 3px; }
+            100% { bottom: 0; }
+        }
+
+        .enderman-walk::after {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #a020f0;
+            border-radius: 50%;
+            filter: blur(2px);
+            left: 50%;
+            top: 40%;
+            opacity: 0.7;
+
+            animation: particles 1.2s infinite;
+        }
+
+        @keyframes particles {
+            0% { transform: translate(0,0) scale(1); opacity: 0.8; }
+            50% { transform: translate(10px,-10px) scale(0.6); opacity: 0.4; }
+            100% { transform: translate(-10px,10px) scale(1); opacity: 0.8; }
         }
 
         .search-box {
@@ -323,7 +385,6 @@
     <!-- ⭐ ENDERMAN CHE CAMMINA -->
     <div class="enderman-walk">
         <img src="icons/enderman.png" alt="Enderman">
-
     </div>
 
     <div class="search-box">
