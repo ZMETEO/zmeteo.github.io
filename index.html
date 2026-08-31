@@ -254,9 +254,9 @@
 .social-bar {
     width: 100%;
     margin-top: 250px;          /* 🔥 spinge la barra verso il basso */
-    margin-bottom: 40px;       /* 🔥 crea spazio dal fondo */
+    margin-bottom: 40px;        /* 🔥 crea spazio dal fondo */
     display: flex;
-    justify-content: center;   /* 🔥 centrate orizzontalmente */
+    justify-content: center;    /* 🔥 centrate orizzontalmente */
     gap: 20px;
 }
 
@@ -269,17 +269,20 @@
     cursor: pointer;
 }
 
+/* ⭐ Effetto hover unico e pulito */
 .social-bar img:hover {
     transform: scale(1.55);
     filter: drop-shadow(0 0 10px #ff0000);
     image-rendering: pixelated; /* 🔥 mantiene la nitidezza durante lo zoom */
 }
+
+/* ⭐ Store più grande di base, senza bloccare l’hover */
 .social-bar img[alt="Store"] {
-    scale: 1.50;
+    scale: 1.50;                /* 🔥 NON usare transform qui */
     image-rendering: pixelated;
-    transition: transform 0.2s, filter 0.2s;
 }
-}
+
+
     </style>
     
 </head>
